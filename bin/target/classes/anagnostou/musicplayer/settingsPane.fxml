@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #121212;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="anagnostou.musicplayer.SettingsController">
+   <children>
+      <AnchorPane id="equalizer" layoutX="56.0" layoutY="84.0" prefHeight="366.0" prefWidth="489.0" style="-fx-background-radius: 10; -fx-background-color: #212121;" stylesheets="@style.css">
+         <children>
+            <!-- Label and Slider for 32 Hz (Bass) -->
+            <Label layoutX="25.0" layoutY="46.0" prefHeight="17.0" prefWidth="96.0" text="Bass (20-250 Hz)">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="12.0" />
+               </font></Label>
+            <Slider fx:id="bassSlider" layoutX="23.0" layoutY="63.0" max="12.0" min="-24.0" prefHeight="38.0" prefWidth="441.0" showTickLabels="true" showTickMarks="true" value="0.0" />
+
+            <!-- Label and Slider for 125 Hz (Low Midrange) -->
+            <Label layoutX="25.0" layoutY="107.0" prefHeight="14.0" prefWidth="154.0" text="Low Midrange (250-500 Hz)" />
+            <Slider fx:id="lowMidSlider" layoutX="23.0" layoutY="128.0" max="12.0" min="-24.0" prefHeight="38.0" prefWidth="441.0" showTickLabels="true" showTickMarks="true" value="0.0" />
+
+            <!-- Label and Slider for 500 Hz (Midrange) -->
+            <Label layoutX="25.0" layoutY="174.0" prefHeight="14.0" prefWidth="154.0" text="Midrange (500–2,000 Hz)" />
+            <Slider fx:id="midSlider" layoutX="23.0" layoutY="191.0" max="12.0" min="-24.0" prefHeight="38.0" prefWidth="441.0" showTickLabels="true" showTickMarks="true" value="0.0" />
+
+            <!-- Label and Slider for 2 kHz (Treble) -->
+            <Label layoutX="25.0" layoutY="229.0" text="Treble (2,000–6,000 Hz)" />
+            <Slider fx:id="trebleSlider" layoutX="23.0" layoutY="249.0" max="12.0" min="-24.0" prefHeight="38.0" prefWidth="441.0" showTickLabels="true" showTickMarks="true" value="0.0" />
+
+            <!-- Label and Slider for 8 kHz (Very High Treble) -->
+            <Label layoutX="25.0" layoutY="294.0" text="High Treble (6,000–16,000 Hz)" />
+            <Slider fx:id="highTrebleSlider" layoutX="25.0" layoutY="308.0" max="12.0" min="-24.0" prefHeight="38.0" prefWidth="441.0" showTickLabels="true" showTickMarks="true" value="0.0" />
+            <Label layoutX="23.0" layoutY="7.0" prefHeight="29.0" prefWidth="120.0" text="Ισοσταθμιστής">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="refreshButton" fitHeight="38.0" fitWidth="33.0" layoutX="433.0" layoutY="16.0" onMouseClicked="#equalizerRefresh" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@reset.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="autoPlay" layoutX="56.0" layoutY="481.0" prefHeight="58.0" prefWidth="489.0" style="-fx-background-radius: 10; -fx-background-color: #212121;">
+         <children>
+            <CheckBox fx:id="autoPlayCheckBox" layoutX="184.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-cursor: hand;" text="Auto Play" textFill="#b3b3b3">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="18.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

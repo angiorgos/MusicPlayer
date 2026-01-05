@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="887.0" prefWidth="650.0" style="-fx-background-color: #121212; -fx-border-radius: 10;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="anagnostou.musicplayer.HelpController">
+   <children>
+      <AnchorPane layoutX="62.0" layoutY="34.0" prefHeight="825.0" prefWidth="526.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="61.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@play.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="68.0" prefHeight="25.0" prefWidth="269.0" text="Αναπαραγωγή/Παύση τραγουδιού" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="14.0" prefHeight="23.0" prefWidth="208.0" text="Βοήθεια Προγράμματος" textFill="#b3b3b3">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="61.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@next.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="131.0" prefHeight="25.0" prefWidth="208.0" text="Επόμενο τραγούδι" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="61.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@next.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="197.0" prefHeight="25.0" prefWidth="208.0" text="Προηγούμενο τραγούδι" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="61.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@folder.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="265.0" prefHeight="25.0" prefWidth="380.0" text="Επιλογή φακέλου αναπαραγωγής τραγουδιών mp3" textFill="#b3b3b3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="61.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@repeatOn.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="329.0" prefHeight="25.0" prefWidth="355.0" text="Λειτουργία επανάληψης τρεχόντος τραγουδιού" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="66.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@sound.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="388.0" prefHeight="25.0" prefWidth="355.0" text="Μείωση/Ενίσχυση έντασης ήχου" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="521.0" prefHeight="23.0" prefWidth="208.0" text="Ρυθμίσεις" textFill="#b3b3b3">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="554.0" prefHeight="53.0" prefWidth="380.0" text="Ισοσταμιστής: Ρυθμίζει την ένταση συχνοτήτων  &#10;προσαρμόζοντας την ποιότητα του ήχου.&#10;" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="607.0" prefHeight="53.0" prefWidth="380.0" text="Auto Play: Ενεργοποίηση αυτόματης&#10;αναπαραγωγής του επόμενου τραγουδιού. &#10;" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="66.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@search.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="413.0" prefHeight="97.0" prefWidth="355.0" text="Αναζήτηση mp3 αρχείου μέσα στον επιλεγμένο&#10;φάκελο. Κάντε κλικ στο όνομα του αρχείου &#10;που εμφανίζεται για αναπαραγωγή." textFill="#b3b3b3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="678.0" prefHeight="23.0" prefWidth="208.0" text="Αναφορές" textFill="#b3b3b3">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="710.0" prefHeight="25.0" prefWidth="324.0" text="Προγραμματιστής: Αναγνώστου Γεώργιος" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="760.0" prefHeight="24.0" prefWidth="324.0" text="Εικονίδια: icons8.com" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="735.0" prefHeight="18.0" prefWidth="324.0" text="Email: angiorgos12@gmail.com" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="785.0" prefHeight="25.0" prefWidth="324.0" text="Έκδοση: v1.0" textFill="#b3b3b3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

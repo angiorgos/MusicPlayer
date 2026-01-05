@@ -1,0 +1,64 @@
+.tooltip {
+    -fx-font-family: "Franklin Gothic Medium";
+    -fx-font-size: 14px;
+    -fx-text-fill: #b3b3b3;
+}
+
+    .icons:hover {
+        -fx-opacity: 0.8;
+    }
+
+.progress-bar .bar{
+    -fx-background-color: #b3b3b3;
+    background-color: #b3b3b3;
+    -fx-padding: 3;
+    padding: 3;
+    -fx-background-insets: 0;
+}
+.progress-bar .track {
+    -fx-background-color: #535353;
+    background-color: #535353;
+}
+
+
+.slider .track {
+    -fx-background-color: #535353;
+    -fx-background-insets: 0;
+    -fx-background-radius: 3;
+}
+
+#equalizer .label{
+    -fx-text-fill: #b3b3b3;
+    -fx-font-family: "Franklin Gothic Medium";
+}
+
+
+.slider .thumb {
+    -fx-background-color: #ffffff;
+}
+
+.slider .thumb:pressed {
+    -fx-background-color: #b3b3b3;
+}
+
+#progressSlider .track{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+#refreshButton{
+    -fx-cursor: hand;
+}
+#refreshButton:hover{
+    -fx-opacity: 0.8;
+}
+#progressSlider .thumb {
+    -fx-background-color: #ffffff;
+    -fx-opacity: 0;
+    -fx-pref-width: 0px;  /* Adjust width as needed */
+    -fx-pref-height: 0px; /* Adjust height as needed */
+
+}
+#progressSlider .thumb:hover {
+    -fx-cursor: hand;
+}
+
