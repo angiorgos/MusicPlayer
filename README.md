@@ -1,8 +1,8 @@
-# MusicPlayer 🎵
+# MusicPlayer
 
 A feature-rich desktop music player built with **JavaFX** and **Maven**. This application provides a modern interface for managing and playing your local music library, with integrated metadata support and Discord Rich Presence.
 
-## 📺 Demo Video
+## Demo Video
 Check out the project in action:
 
 [![MusicPlayer Demo](https://img.youtube.com/vi/6HD0O6TSg8E/0.jpg)](https://www.youtube.com/watch?v=6HD0O6TSg8E)
@@ -11,7 +11,7 @@ Check out the project in action:
 
 ---
 
-## ✨ Features
+## Features
 
 - **MP3 Playback:** Smooth playback of MP3 files with play/pause, next, and previous controls.
 - **Library Management:** Select and load music from any local directory.
@@ -26,7 +26,7 @@ Check out the project in action:
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 The project follows a standard Maven directory structure:
 
@@ -54,7 +54,7 @@ MusicPlayer/
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Java 21**
 - **JavaFX 23** (Controls, FXML, Media, Graphics)
@@ -65,7 +65,7 @@ MusicPlayer/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - JDK 21 or higher
@@ -87,5 +87,5 @@ MusicPlayer/
 
 ---
 
-## 📝 License
-This project is for educational purposes. Feel free to use and modify it.
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
