@@ -46,8 +46,8 @@
             <AnchorPane fx:id="box" layoutX="432.0" layoutY="-21.0" prefHeight="100.0" prefWidth="347.0" />
             <AnchorPane fx:id="esoterikoPain" layoutX="117.0" layoutY="82.0" prefHeight="285.0" prefWidth="330.0" />
          </children></AnchorPane>
-      <Label fx:id="timePassed" layoutX="383.0" layoutY="683.0" prefHeight="17.0" prefWidth="30.0" textFill="WHITE" />
-      <Label fx:id="timeMax" layoutX="866.0" layoutY="683.0" prefHeight="17.0" prefWidth="30.0" textFill="WHITE" />
+      <Label fx:id="timePassed" layoutX="373.0" layoutY="683.0" prefHeight="17.0" prefWidth="50.0" textFill="WHITE" />
+      <Label fx:id="timeMax" layoutX="866.0" layoutY="683.0" prefHeight="17.0" prefWidth="50.0" textFill="WHITE" />
       <AnchorPane fx:id="settingsButton" layoutX="40.0" layoutY="20.0" onMouseClicked="#settings" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #212121; -fx-background-radius: 10; -fx-cursor: hand;">
          <children>
             <Label layoutX="62.0" layoutY="10.0" text="Ρυθμίσεις" textFill="#b3b3b3">

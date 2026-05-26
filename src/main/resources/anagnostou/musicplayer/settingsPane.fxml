@@ -51,12 +51,12 @@
          </children></AnchorPane>
       <AnchorPane fx:id="autoPlay" layoutX="56.0" layoutY="482.0" prefHeight="94.0" prefWidth="489.0" style="-fx-background-radius: 10; -fx-background-color: #212121;">
          <children>
-            <CheckBox fx:id="autoPlayCheckBox" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-cursor: hand;" text="Auto Play" textFill="#b3b3b3">
+            <CheckBox fx:id="autoPlayCheckBox" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" style="-fx-cursor: hand;" text="Auto Play" textFill="#b3b3b3">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="discordCheckBox" layoutX="22.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="178.0" style="-fx-cursor: hand;" text="Discord Presence" textFill="#b3b3b3">
+            <CheckBox fx:id="discordCheckBox" layoutX="22.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-cursor: hand;" text="Discord Presence" textFill="#b3b3b3">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
