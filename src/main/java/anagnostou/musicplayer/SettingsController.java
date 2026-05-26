@@ -1,5 +1,6 @@
 package anagnostou.musicplayer;
 
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
@@ -7,6 +8,8 @@ import javafx.scene.media.EqualizerBand;
 
 
 public class SettingsController {
+
+    private ChangeListener<Number> bassListener, lowMidListener, midListener, trebleListener, highTrebleListener;
     @FXML
     private CheckBox autoPlayCheckBox;
 
@@ -36,11 +39,25 @@ public class SettingsController {
             this.trebleBand = treble;
             this.highTrebleBand = highTreble;
 
-            bassSlider.valueProperty().addListener((observable, oldValue, newValue) -> bassBand.setGain(newValue.doubleValue()));
-            lowMidSlider.valueProperty().addListener((observable, oldValue, newValue) -> lowMidBand.setGain(newValue.doubleValue()));
-            midSlider.valueProperty().addListener((observable, oldValue, newValue) -> midBand.setGain(newValue.doubleValue()));
-            trebleSlider.valueProperty().addListener((observable, oldValue, newValue) -> trebleBand.setGain(newValue.doubleValue()));
-            highTrebleSlider.valueProperty().addListener((observable, oldValue, newValue) -> highTrebleBand.setGain(newValue.doubleValue()));
+            if (bassListener != null) {
+                bassSlider.valueProperty().removeListener(bassListener);
+                lowMidSlider.valueProperty().removeListener(lowMidListener);
+                midSlider.valueProperty().removeListener(midListener);
+                trebleSlider.valueProperty().removeListener(trebleListener);
+                highTrebleSlider.valueProperty().removeListener(highTrebleListener);
+            }
+
+            bassListener = (observable, oldValue, newValue) -> bassBand.setGain(newValue.doubleValue());
+            lowMidListener = (observable, oldValue, newValue) -> lowMidBand.setGain(newValue.doubleValue());
+            midListener = (observable, oldValue, newValue) -> midBand.setGain(newValue.doubleValue());
+            trebleListener = (observable, oldValue, newValue) -> trebleBand.setGain(newValue.doubleValue());
+            highTrebleListener = (observable, oldValue, newValue) -> highTrebleBand.setGain(newValue.doubleValue());
+
+            bassSlider.valueProperty().addListener(bassListener);
+            lowMidSlider.valueProperty().addListener(lowMidListener);
+            midSlider.valueProperty().addListener(midListener);
+            trebleSlider.valueProperty().addListener(trebleListener);
+            highTrebleSlider.valueProperty().addListener(highTrebleListener);
 
             bassSlider.setValue(bassBand.getGain());
             lowMidSlider.setValue(lowMidBand.getGain());

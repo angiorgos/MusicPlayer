@@ -65,6 +65,9 @@ public class HelloController implements Initializable {
 
     private boolean repeat = false;
 
+    private ListView<String> resultList;
+    private ObservableList<String> observableSongs;
+
     private SettingsController settingsController;
 
     private AudioEqualizer equalizer;
@@ -130,15 +133,13 @@ public class HelloController implements Initializable {
         progressSlider.setMin(0);
         progressSlider.setMax(1);
         progressSlider.setValue(0);
-        progressSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-
-
+        progressSlider.valueChangingProperty().addListener((obs, wasChanging, isChanging) -> {
+            if (!isChanging) {
                 mediaPlayer.seek(javafx.util.Duration.seconds(progressSlider.getValue() * totalSecondsMax));
-
             }
-
+        });
+        progressSlider.setOnMouseClicked(event -> {
+            mediaPlayer.seek(javafx.util.Duration.seconds(progressSlider.getValue() * totalSecondsMax));
         });
 
         Tooltip tooltip1 = new Tooltip("Αναπαραγωγή");
@@ -154,10 +155,78 @@ public class HelloController implements Initializable {
         Tooltip.install(musicDirectory, tooltip5);
         Tooltip.install(repeatIcon, tooltip6);
 
+        initSearch();
         equalize();
         loadEqualizerSettings();
 
 
+    }
+
+    private void initSearch() {
+        observableSongs = FXCollections.observableArrayList();
+        refreshSongList();
+
+        resultList = new ListView<>();
+        resultList.setPrefHeight(100);
+        resultList.setVisible(false);
+        box.getChildren().add(resultList);
+
+        resultList.prefWidthProperty().bind(searchPrompt.widthProperty());
+
+        resultList.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); "
+                + "-fx-control-inner-background: rgba(0, 0, 0, 0.7); "
+                + "-fx-background-insets: 0; "
+                + "-fx-background-radius: 5; "
+                + "-fx-border-width: 0; "
+                + "-fx-text-fill: #b3b3b3; "
+                + "-fx-font-size: 14;");
+
+        searchPrompt.setOnMouseClicked(event -> {
+            if (!Objects.equals(searchPrompt.getText(), "")) {
+                resultList.setVisible(true);
+            }
+        });
+
+        pane.setOnMouseClicked(event -> {
+            if (event.getSource() != searchPrompt) {
+                resultList.setVisible(false);
+            }
+        });
+
+        searchPrompt.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty()) {
+                resultList.setItems(FXCollections.observableArrayList());
+                resultList.setVisible(false);
+            } else {
+                ObservableList<String> filteredSongs = observableSongs.filtered(song ->
+                        song.toLowerCase().contains(newValue.toLowerCase()));
+                ObservableList<String> limitedResults = FXCollections.observableArrayList(
+                        filteredSongs.subList(0, Math.min(filteredSongs.size(), 3))
+                );
+                resultList.setItems(limitedResults);
+                resultList.setVisible(!limitedResults.isEmpty());
+            }
+        });
+
+        resultList.setOnMouseClicked(event -> {
+            String selectedSongName = resultList.getSelectionModel().getSelectedItem();
+            if (selectedSongName != null) {
+                for (int i = 0; i < songs.size(); i++) {
+                    if (songs.get(i).getName().equals(selectedSongName)) {
+                        songNumber = i;
+                        playCurrentSong();
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    private void refreshSongList() {
+        observableSongs.clear();
+        for (File song : songs) {
+            observableSongs.add(song.getName());
+        }
     }
 
     private Map<String, Double> equalizerSettings = new HashMap<>();
@@ -275,8 +344,7 @@ public class HelloController implements Initializable {
                 songLabel.setText("Ο συγκεκριμένος φάκελος δεν περιέχει τραγούδια! Διαλέξτε άλλον πατώντας τον φάκελο κάτω αριστερά!");
             }
 
-            // Ενημέρωση αποτελεσμάτων αναζήτησης μετά την αλλαγή φακέλου
-            search();
+            refreshSongList();
         } else {
             System.out.println("No directory selected");
         }
@@ -439,12 +507,13 @@ public class HelloController implements Initializable {
                     if(settingsController.isDiscordEnabled()) {
                         if(mp3File.getId3v2Tag() != null) {
                             rich = new DiscordRichPresence.Builder(formattedTimePassed + " | " + formattedTimeMax).setDetails("Listening to " + mp3File.getId3v2Tag().getTitle()).build();
-                        }else if(mp3File.getId3v2Tag() == null && mp3File.getId3v1Tag() != null) {
+                        } else if(mp3File.getId3v1Tag() != null) {
                             rich = new DiscordRichPresence.Builder(formattedTimePassed + " | " + formattedTimeMax).setDetails("Listening to " + mp3File.getId3v1Tag().getTitle()).build();
-                        }else
+                        } else {
                             rich = new DiscordRichPresence.Builder(formattedTimePassed + " | " + formattedTimeMax).setDetails("Listening to " + songs.get(songNumber).getName()).build();
                         }
                         DiscordRPC.discordUpdatePresence(rich);
+                    }
 
 
                     if (current / end == 1 && repeat == true) { //otan stamataei to tragoudi na stamatisei o timer ektos an theloume epanalipsi
@@ -549,75 +618,9 @@ public class HelloController implements Initializable {
 
     @FXML
     public void search() {
-        if (searchPrompt.getText().isEmpty()) { //gia na kanei unfocus to search otan patas allou.
+        if (searchPrompt.getText().isEmpty()) {
             pane.requestFocus();
         }
-        ObservableList<String> observableSongs = FXCollections.observableArrayList();
-        for (File song : songs) {
-            observableSongs.add(song.getName());
-        }
-
-        ListView<String> resultList = new ListView<>();
-        resultList.setPrefHeight(100);
-        resultList.setVisible(false);
-        box.getChildren().clear();
-        box.getChildren().add(resultList);
-
-        resultList.prefWidthProperty().bind(searchPrompt.widthProperty());
-
-
-
-        resultList.setStyle("-fx-background-color: rgba(0, 0, 0, 0.7); "
-                + "-fx-control-inner-background: rgba(0, 0, 0, 0.7); "
-                + "-fx-background-insets: 0; "
-                + "-fx-background-radius: 5; "
-                + "-fx-border-width: 0; "
-                + "-fx-text-fill: #b3b3b3; "
-                + "-fx-font-size: 14;");
-
-
-        searchPrompt.setOnMouseClicked(event -> {
-            if (!Objects.equals(searchPrompt.getText(), "")) {
-                resultList.setVisible(true);
-            }
-        });
-
-
-
-        pane.setOnMouseClicked(event -> {
-            if (event.getSource() != searchPrompt) {
-                resultList.setVisible(false);
-            }
-        });
-
-
-        searchPrompt.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.isEmpty()) {
-                resultList.setItems(FXCollections.observableArrayList());
-                resultList.setVisible(false);
-            } else {
-                ObservableList<String> filteredSongs = observableSongs.filtered(song ->
-                        song.toLowerCase().contains(newValue.toLowerCase()));
-                ObservableList<String> limitedResults = FXCollections.observableArrayList(
-                        filteredSongs.subList(0, Math.min(filteredSongs.size(), 3))
-                );
-                resultList.setItems(limitedResults);
-                resultList.setVisible(!limitedResults.isEmpty());
-            }
-        });
-
-        resultList.setOnMouseClicked(event -> {
-            String selectedSongName = resultList.getSelectionModel().getSelectedItem();
-            if (selectedSongName != null) {
-                for (int i = 0; i < songs.size(); i++) {
-                    if (songs.get(i).getName().equals(selectedSongName)) {
-                        songNumber = i;
-                        playCurrentSong();
-                        break;
-                    }
-                }
-            }
-        });
     }
 
     private void playCurrentSong() {
